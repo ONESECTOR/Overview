@@ -1,5 +1,14 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":core:ui")
+
+
+include(":core:navigation")
+
+
+include(":feature")
+
+
 include(":core")
 
 
