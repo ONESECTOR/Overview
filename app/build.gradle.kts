@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.navigationSafeargsKotlin)
+    kotlin("kapt")
     id("com.google.gms.google-services")
 }
 
@@ -39,12 +41,19 @@ android {
 
 dependencies {
 
+    implementation(project(":core"))
+    implementation(project(":core:ui"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
+    implementation(project(":feature"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.startup)
 
     // ViewBinding Delegate
     implementation(libs.viewbinding.delegate)
@@ -60,4 +69,7 @@ dependencies {
 
     // DI
     implementation(libs.koin)
+
+    // Datastore
+    implementation(libs.androidx.datastore)
 }

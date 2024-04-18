@@ -36,8 +36,4 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-
-    // Orbit MVI
-    implementation(libs.orbit.mvi.core)
-    implementation(libs.orbit.mvi.viewmodel)
 }

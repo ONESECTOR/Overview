@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Overview</string>
+
+    <!-- Bottom menu -->
+    <string name="title_profile">Профиль</string>
+    <string name="title_feed">Главная</string>
 </resources>
