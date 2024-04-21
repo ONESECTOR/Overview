@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "548033660266",
+    "project_id": "onesector-reviewer",
+    "storage_bucket": "onesector-reviewer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:548033660266:android:b2b5accd83f3978bc21113",
+        "android_client_info": {
+          "package_name": "com.sector.overview"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCw8cWHqcGvC5RyN6RHGUHmMRPTGKlHQyw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.navigationSafeargsKotlin)
+    kotlin("kapt")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -13,8 +16,6 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -40,13 +41,35 @@ android {
 
 dependencies {
 
+    implementation(project(":core"))
+    implementation(project(":core:ui"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
+    implementation(project(":feature"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.startup)
+
+    // ViewBinding Delegate
+    implementation(libs.viewbinding.delegate)
+
+    // Adapter Delegate
+    implementation(libs.adapter.delegate.dsl)
+    implementation(libs.adapter.delegate.dsl.viewbinding)
+    implementation(libs.firebase.firestore.ktx)
+
+    // Orbit MVI
+    implementation(libs.orbit.mvi.core)
+    implementation(libs.orbit.mvi.viewmodel)
+
+    // DI
+    implementation(libs.koin)
+
+    // Datastore
+    implementation(libs.androidx.datastore)
 }
