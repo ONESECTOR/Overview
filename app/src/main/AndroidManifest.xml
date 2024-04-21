@@ -29,9 +29,12 @@
             tools:node="merge">
 
             <meta-data
-                android:name="e com.sector.overview.di.OverviewInitializer"
+                android:name="com.sector.overview.di.KoinInitializer"
                 android:value="androidx.startup" />
         </provider>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
