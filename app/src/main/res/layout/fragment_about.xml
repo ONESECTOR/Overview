@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@color/purple_background"
+    tools:context=".ui.about.AboutFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_cross"
+        app:title="@string/about_title"
+        app:titleCentered="true"
+        app:titleTextAppearance="@style/Title"
+        app:titleTextColor="@color/white_f2" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="23dp"
+        app:cardBackgroundColor="@color/purple_dark_card"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/purple_background"
+            android:orientation="vertical"
+            android:showDividers="middle">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/btn_vk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:fontFamily="@font/tt_norms_pro_medium"
+                android:gravity="center_vertical"
+                android:padding="15dp"
+                android:text="@string/about_vk"
+                android:textColor="@color/gray_bd"
+                android:textSize="12sp"
+                app:drawableEndCompat="@drawable/ic_chevron_gray" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/btn_telegram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:fontFamily="@font/tt_norms_pro_medium"
+                android:gravity="center_vertical"
+                android:padding="15dp"
+                android:text="@string/about_telegram"
+                android:textColor="@color/gray_bd"
+                android:textSize="12sp"
+                app:drawableEndCompat="@drawable/ic_chevron_gray" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/logo"
+        app:layout_constraintBottom_toBottomOf=""
+        app:layout_constraintBottom_toTopOf="@id/tv_app_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_app_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/tt_norms_pro_medium"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@color/white_f2"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_app_version"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_app_version"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/tt_norms_pro_light"
+        android:textAlignment="center"
+        android:textColor="@color/gray_80"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SmallSp"
+        tools:text="Версия приложения: 1.0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

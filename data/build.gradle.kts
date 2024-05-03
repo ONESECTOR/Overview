@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    kotlin("plugin.serialization")
 }
 
 android {
@@ -66,4 +67,7 @@ dependencies {
     // Chucker
     debugImplementation(libs.chucker)
     releaseImplementation(libs.chucker.no.op)
+
+    // Firebase Firestore Database
+    implementation(libs.firebase.firestore.ktx)
 }

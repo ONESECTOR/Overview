@@ -15,7 +15,7 @@ android {
         minSdk = 24
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0"
     }
 
     buildTypes {
@@ -61,6 +61,8 @@ dependencies {
     // Adapter Delegate
     implementation(libs.adapter.delegate.dsl)
     implementation(libs.adapter.delegate.dsl.viewbinding)
+
+    // Firebase Firestore Database
     implementation(libs.firebase.firestore.ktx)
 
     // Orbit MVI
@@ -72,4 +74,11 @@ dependencies {
 
     // Datastore
     implementation(libs.androidx.datastore)
+
+    // Coil
+    implementation(libs.coil)
+    //implementation(libs.coil.transformations)
+
+    // Browser
+    implementation(libs.androidx.browser)
 }

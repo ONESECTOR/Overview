@@ -1,7 +1,60 @@
 <resources>
     <string name="app_name">Overview</string>
 
+    <string name="vk_url">https://vk.com/onesector</string>
+    <string name="telegram_url">https://t.me/onesector</string>
+
+    <!-- Common -->
+    <string name="search">Поиск</string>
+    <string name="hint_email">Электронная почта</string>
+    <string name="hint_password">Пароль</string>
+
     <!-- Bottom menu -->
+    <string name="title_home">Главная</string>
+    <string name="title_reviews">Обзоры</string>
     <string name="title_profile">Профиль</string>
-    <string name="title_feed">Главная</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_slogan">Экспертные обзоры\nкино - теперь легко!</string>
+    <string name="onboarding_start">Начать</string>
+    <string name="onboarding_login">Уже есть аккаунт? Войти</string>
+    <string name="onboarding_login_clickable_part">Войти</string>
+
+    <!-- Login -->
+    <string name="login_toolbar">Вход</string>
+    <string name="login_title">С возвращением!</string>
+    <string name="login_description">Мы рады видеть вас снова. Для продолжения,\nвведите вашу электронную почту и пароль.</string>
+    <string name="login_button">Войти</string>
+
+    <!-- Register -->
+    <string name="register_toolbar">Регистрация</string>
+    <string name="register_title">Создание аккаунта</string>
+    <string name="register_description">Создайте аккаунт. Это займет меньше одной минуты.\nВведите электронную почту и пароль.</string>
+    <string name="register_button">Создать аккаунт</string>
+
+    <!-- About -->
+    <string name="about_title">О приложении</string>
+    <string name="about_vk">Страница в ВК разработчика</string>
+    <string name="about_telegram">Телеграмм разработчика</string>
+    <string name="about_version">Версия приложения: %1$s</string>
+
+    <!-- Home -->
+    <string name="item_feed_soon">Скоро</string>
+    <string name="greetings_morning">Доброе утро! 👋</string>
+    <string name="greetings_day">Добрый день! 👋</string>
+    <string name="greetings_evening">Добрый вечер! 👋</string>
+    <string name="greetings_night">Доброй ночи! 👋</string>
+    
+    <!-- Profile -->
+    <string name="profile_common_category_title">Основные</string>
+    <string name="profile_about">О приложении</string>
+    <string name="profile_log_out">Выйти</string>
+
+    <string name="categories">Категории</string>
+    <string name="category_comedy">Комедии</string>
+    <string name="category_drama">Драмы</string>
+    <string name="category_fighter">Боевик</string>
+    <string name="category_horror">Ужасы</string>
+    <string name="category_fantasy">Фантастика</string>
+    <string name="category_detectives">Детективы</string>
 </resources>

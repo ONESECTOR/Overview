@@ -1,16 +1,29 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="Base.Theme.Overview" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">@color/black</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <item name="android:windowLightStatusBar">true</item>
+        <item name="colorPrimary">#e1ff8a</item>
+        <item name="colorOnSecondary">@color/gray_80</item>
+        <item name="android:windowLightStatusBar">false</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="android:statusBarColor">#161616</item>
 
         <item name="android:textViewStyle">@style/DefaultTextViewStyle</item>
     </style>
 
     <style name="DefaultTextViewStyle" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black</item>
-        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:fontFamily">@font/tt_hoves_regular</item>
+    </style>
+
+    <style name="Chip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:textSize">13sp</item>
+        <item name="fontFamily">@font/tt_hoves_medium</item>
+    </style>
+
+    <style name="Title" parent="Widget.MaterialComponents.ActionBar.PrimarySurface">
+        <item name="fontFamily">@font/tt_norms_pro_regular</item>
+        <item name="android:fontFamily">@font/tt_norms_pro_regular</item>
+        <item name="android:textSize">17sp</item>
     </style>
 
     <style name="Theme.Overview" parent="Base.Theme.Overview" />

@@ -6,12 +6,33 @@ import android.view.View
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.sector.overview.R
 import com.sector.overview.databinding.FragmentProfileBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.orbitmvi.orbit.viewmodel.observe
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private val viewBinding: FragmentProfileBinding by viewBinding(FragmentProfileBinding::bind)
 
+    private val viewModel by viewModel<ProfileViewModel>()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.observe(
+            lifecycleOwner = viewLifecycleOwner,
+            state = ::handleState,
+            sideEffect = ::handleSideEffect
+        )
+
+        viewBinding.btnAbout.setOnClickListener {  }
+        viewBinding.btnLogOut.setOnClickListener {  }
+    }
+
+    private fun handleState(state: ProfileViewState) {
+
+    }
+
+    private fun handleSideEffect(sideEffect: ProfileSideEffect) {
+
     }
 }

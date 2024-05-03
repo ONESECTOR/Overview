@@ -27,13 +27,18 @@ class HostFragment : NavigationRootFragment(), ExternalNavigation, ExtrasProvide
     ): View {
         _binding = FragmentHostBinding.inflate(inflater, container, false)
 
+        switchToGraph(R.navigation.home_graph, 0)
+
         binding.navView.setOnItemSelectedListener { menuItem ->
             when(menuItem.itemId) {
-                R.id.navigation_feed -> {
-                    switchToGraph(R.navigation.feed_graph, 0)
+                R.id.navigation_home -> {
+                    switchToGraph(R.navigation.home_graph, 0)
+                }
+                R.id.navigation_reviews -> {
+                    switchToGraph(R.navigation.reviews_graph, 1)
                 }
                 R.id.navigation_profile -> {
-                    switchToGraph(R.navigation.profile_graph, 1)
+                    switchToGraph(R.navigation.profile_graph, 2)
                 }
             }
             true

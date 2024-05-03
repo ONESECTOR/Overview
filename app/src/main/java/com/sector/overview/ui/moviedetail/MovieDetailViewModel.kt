@@ -1,4 +1,20 @@
 package com.sector.overview.ui.moviedetail
 
-class MovieDetailViewModel {
+import com.sector.ui.viewmodel.BaseViewModel
+
+internal class MovieDetailViewModel(
+
+): BaseViewModel<MovieDetailViewState, MovieDetailSideEffect>(MovieDetailViewState()) {
+
+    init {
+
+    }
+}
+
+internal data class MovieDetailViewState(
+    val name: String = ""
+)
+
+internal sealed class MovieDetailSideEffect {
+
 }
