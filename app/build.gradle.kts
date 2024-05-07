@@ -65,6 +65,9 @@ dependencies {
     // Firebase Firestore Database
     implementation(libs.firebase.firestore.ktx)
 
+    // Firebase Auth
+    implementation(libs.firebase.auth)
+
     // Orbit MVI
     implementation(libs.orbit.mvi.core)
     implementation(libs.orbit.mvi.viewmodel)

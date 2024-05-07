@@ -1,16 +1,15 @@
 package com.sector.overview.ui.onboarding
 
 import android.os.Bundle
-import android.text.Spanned
-import android.text.TextPaint
 import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
-import androidx.core.text.buildSpannedString
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.sector.overview.R
 import com.sector.overview.databinding.FragmentOnboardingBinding
+import com.sector.overview.utils.spannableBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.orbitmvi.orbit.viewmodel.observe
 
@@ -30,25 +29,21 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         )
 
         viewBinding.tvLogin.movementMethod = LinkMovementMethod()
-        viewBinding.tvLogin.text = buildSpannedString {
+        viewBinding.tvLogin.text = requireContext().spannableBuilder {
             append(getString(R.string.onboarding_login))
-            val clickableSpan = object : ClickableSpan() {
-                override fun onClick(widget: View) {
-                    onOpenLogin()
-                }
-
-                override fun updateDrawState(ds: TextPaint) {
-                    super.updateDrawState(ds)
-                    ds.isUnderlineText = false
+            appendSpace(getString(R.string.onboarding_login_clickable_part)) {
+                color(R.color.purple_main)
+                click {
+                    Log.d("TAG!", "test")
+                    findNavController().navigate(
+                        directions = OnboardingFragmentDirections.actionOnboardingFragmentToLoginFragment()
+                    )
                 }
             }
-            val clickablePart = getString(R.string.onboarding_login_clickable_part)
-            val clickableStart = indexOf(clickablePart)
-            setSpan(clickableSpan, clickableStart, clickableStart + clickablePart.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         }
 
         viewBinding.btnStart.setOnClickListener {
-            onOpenLogin()
+            onOpenRegister()
         }
     }
 
@@ -60,7 +55,9 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
     }
 
-    private fun onOpenLogin() {
-
+    private fun onOpenRegister() {
+        findNavController().navigate(
+            directions = OnboardingFragmentDirections.actionOnboardingFragmentToLoginFragment()
+        )
     }
 }

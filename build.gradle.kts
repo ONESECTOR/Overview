@@ -14,4 +14,5 @@ plugins {
     alias(libs.plugins.androidLibrary) apply false
     alias(libs.plugins.navigationSafeargsKotlin) apply false
     alias(libs.plugins.orgJetbrainsKotlinSerialization) apply false
+    alias(libs.plugins.jetbrainsKotlinParcelize) apply false
 }

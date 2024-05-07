@@ -1,35 +1,28 @@
 package com.sector.overview.ui.auth.login
 
 import android.util.Log
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.sector.domain.entity.firebase.User
 import com.sector.ui.viewmodel.BaseViewModel
 import org.orbitmvi.orbit.syntax.simple.intent
 
 internal class LoginViewModel(
-    private val firestoreDatabase: FirebaseFirestore
+    private val firestoreDatabase: FirebaseFirestore,
+    private val firebaseAuth: FirebaseAuth
 ): BaseViewModel<LoginViewState, LoginSideEffect>(LoginViewState()) {
 
     init {
 
     }
 
-    fun login() = intent {
-        firestoreDatabase.collection("users")
-            .document("user1")
-            .get()
-            .addOnSuccessListener { document ->
-                if (document != null && document.exists()) {
-                    val user = document.toObject(User::class.java)
+    fun login(email: String, password: String) = intent {
+        firebaseAuth.signInWithEmailAndPassword(email, password)
+            .addOnSuccessListener {
 
-                    user?.let {
-                        Log.d("TAG!", it.name)
-                        Log.d("TAG!", it.name)
-                    }
-                }
             }
             .addOnFailureListener {
-                Log.d("TAG!", it.message.toString())
+
             }
     }
 }

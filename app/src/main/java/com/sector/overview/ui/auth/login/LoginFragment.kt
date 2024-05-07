@@ -26,6 +26,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         )
 
         viewBinding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
+        viewBinding.btnLogin.setOnClickListener {
+            //viewModel.login()
+        }
     }
 
     private fun handleState(state: LoginViewState) {

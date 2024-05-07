@@ -16,7 +16,7 @@ data class Movie(
     val genres: List<Genre>,
     val countries: List<Country>,
     val persons: List<Person>
-): FeedItem {
+): HomeItem {
 
     enum class Type {
         SERIES,

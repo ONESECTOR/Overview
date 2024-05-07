@@ -17,7 +17,7 @@
     <!-- Onboarding -->
     <string name="onboarding_slogan">Экспертные обзоры\nкино - теперь легко!</string>
     <string name="onboarding_start">Начать</string>
-    <string name="onboarding_login">Уже есть аккаунт? Войти</string>
+    <string name="onboarding_login">Уже есть аккаунт?</string>
     <string name="onboarding_login_clickable_part">Войти</string>
 
     <!-- Login -->
@@ -30,6 +30,8 @@
     <string name="register_toolbar">Регистрация</string>
     <string name="register_title">Создание аккаунта</string>
     <string name="register_description">Создайте аккаунт. Это займет меньше одной минуты.\nВведите электронную почту и пароль.</string>
+    <string name="register_nickname">Никнейм</string>
+    <string name="register_nickname_description">По никнейму люди смогут увидеть, от кого именно\nбыл написан обзор. Например, это может быть ваше\nимя и фамилия.</string>
     <string name="register_button">Создать аккаунт</string>
 
     <!-- About -->
@@ -50,11 +52,8 @@
     <string name="profile_about">О приложении</string>
     <string name="profile_log_out">Выйти</string>
 
-    <string name="categories">Категории</string>
-    <string name="category_comedy">Комедии</string>
-    <string name="category_drama">Драмы</string>
-    <string name="category_fighter">Боевик</string>
-    <string name="category_horror">Ужасы</string>
-    <string name="category_fantasy">Фантастика</string>
-    <string name="category_detectives">Детективы</string>
+    <!-- Home -->
+    <string name="home_category_best">Лучшее</string>
+    <string name="home_category_action_all">Все</string>
+    <string name="home_category_popular_reviews">Популярные обзоры</string>
 </resources>

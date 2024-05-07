@@ -4,8 +4,10 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.sector.overview.NavGraphDirections
 import com.sector.overview.R
 import com.sector.overview.databinding.FragmentProfileBinding
+import com.sector.overview.utils.activityNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.orbitmvi.orbit.viewmodel.observe
 
@@ -24,7 +26,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             sideEffect = ::handleSideEffect
         )
 
-        viewBinding.btnAbout.setOnClickListener {  }
+        viewBinding.btnAbout.setOnClickListener { onAboutClick() }
         viewBinding.btnLogOut.setOnClickListener {  }
     }
 
@@ -34,5 +36,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun handleSideEffect(sideEffect: ProfileSideEffect) {
 
+    }
+
+    private fun onAboutClick() {
+        activityNavController().navigate(
+            directions = NavGraphDirections.actionGlobalAboutFragment()
+        )
     }
 }

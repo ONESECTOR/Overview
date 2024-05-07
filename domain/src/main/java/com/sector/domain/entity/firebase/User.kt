@@ -1,6 +1,10 @@
 package com.sector.domain.entity.firebase
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class User(
-    val name: String,
-    val password: String
-)
+    val email: String? = null,
+    val password: String? = null
+): Parcelable

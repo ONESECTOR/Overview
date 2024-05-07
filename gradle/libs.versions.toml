@@ -11,7 +11,8 @@ viewBindingDelegate = "1.5.9"
 adapterDelegate = "4.3.0"
 orbitMvi = "6.0.0"
 googleServices = "4.3.14"
-firebaseFirestoreKtx = "24.4.1"
+firebaseFirestoreKtx = "25.0.0"
+firebaseAuth = "23.0.0"
 cicerone = "5.0.0"
 koin = "3.4.0"
 coil = "2.4.0"
@@ -45,6 +46,7 @@ coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 coil-transformations = { group = "com.github.Commit451.coil-transformations", name = "transformations", version.ref = "coil-transformations" }
 google-services = { group = "com.google.gms", name = "google-services", version.ref = "googleServices" }
 firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 squareup-okhttp3 = { module = "com.squareup.okhttp3:okhttp", version.ref = "okHttp3" }
 squareup-okhttp3-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okHttp3" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
@@ -63,4 +65,5 @@ jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "k
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 orgJetbrainsKotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 navigationSafeargsKotlin = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
+jetbrainsKotlinParcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 

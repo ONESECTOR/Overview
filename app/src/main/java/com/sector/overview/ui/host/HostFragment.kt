@@ -27,8 +27,6 @@ class HostFragment : NavigationRootFragment(), ExternalNavigation, ExtrasProvide
     ): View {
         _binding = FragmentHostBinding.inflate(inflater, container, false)
 
-        switchToGraph(R.navigation.home_graph, 0)
-
         binding.navView.setOnItemSelectedListener { menuItem ->
             when(menuItem.itemId) {
                 R.id.navigation_home -> {
@@ -51,6 +49,16 @@ class HostFragment : NavigationRootFragment(), ExternalNavigation, ExtrasProvide
         }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val fragment = childFragmentManager.findFragmentById(R.id.main_container)
+        val firstLaunch = fragment?.childFragmentManager?.fragments?.isEmpty() != false
+        if (firstLaunch) {
+            switchToGraph(R.navigation.home_graph, 0)
+        }
     }
 
     override fun onDestroyView() {

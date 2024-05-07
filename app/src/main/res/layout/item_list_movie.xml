@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="10dp"
-    tools:background="@drawable/ic_background_layer">
+    tools:background="@color/purple_background">
 
     <ImageView
         android:id="@+id/iv_movie_poster"
