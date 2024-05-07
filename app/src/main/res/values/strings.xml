@@ -42,10 +42,10 @@
 
     <!-- Home -->
     <string name="item_feed_soon">Скоро</string>
-    <string name="greetings_morning">Доброе утро! 👋</string>
-    <string name="greetings_day">Добрый день! 👋</string>
-    <string name="greetings_evening">Добрый вечер! 👋</string>
-    <string name="greetings_night">Доброй ночи! 👋</string>
+    <string name="greetings_morning">Доброе утро,</string>
+    <string name="greetings_day">Добрый день,</string>
+    <string name="greetings_evening">Добрый вечер,</string>
+    <string name="greetings_night">Доброй ночи,</string>
     
     <!-- Profile -->
     <string name="profile_common_category_title">Основные</string>

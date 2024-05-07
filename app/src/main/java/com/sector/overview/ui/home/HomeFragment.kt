@@ -3,11 +3,11 @@ package com.sector.overview.ui.home
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
-import androidx.core.view.isVisible
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.sector.overview.R
 import com.sector.overview.databinding.FragmentHomeBinding
-import com.sector.overview.ui.home.adapter.HomeAdapter
+import com.sector.overview.ui.home.adapter.HomeMoviesAdapter
+import com.sector.overview.utils.spannableBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.orbitmvi.orbit.viewmodel.observe
 
@@ -26,37 +26,23 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             sideEffect = ::handleSideEffect
         )
 
-        viewBinding.rvHome.adapter = HomeAdapter(
-            onItemClick = {
+        viewBinding.tvCategoryBestAction.setOnClickListener {
 
-            },
-            onActionClick = {
+        }
+        viewBinding.rvMovies.adapter = HomeMoviesAdapter(
+            onItemClick = {
 
             }
         )
     }
 
     private fun handleState(state: FeedViewState) {
-        when {
-            state.loadingState != null -> {
-                viewBinding.loadingView.isVisible = true
-                viewBinding.errorView.isVisible = false
-                viewBinding.rvHome.isVisible = false
-            }
-            state.errorState != null -> {
-                viewBinding.loadingView.isVisible = false
-                viewBinding.errorView.isVisible = true
-                viewBinding.rvHome.isVisible = false
-            }
-            state.items != null -> {
-                viewBinding.loadingView.isVisible = false
-                viewBinding.errorView.isVisible = false
-                viewBinding.rvHome.isVisible = true
+        (viewBinding.rvMovies.adapter as HomeMoviesAdapter).items = state.items
 
-
-                (viewBinding.rvHome.adapter as HomeAdapter).setItems(state.items) {
-
-                }
+        viewBinding.tvGreetings.text = requireContext().spannableBuilder {
+            append(getString(state.greetingsTitle))
+            appendLn(state.nickname.toString()) {
+                color(R.color.white_f2)
             }
         }
     }
