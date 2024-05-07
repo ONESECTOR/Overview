@@ -27,7 +27,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         )
 
         viewBinding.btnAbout.setOnClickListener { onAboutClick() }
-        viewBinding.btnLogOut.setOnClickListener {  }
+        viewBinding.btnLogOut.setOnClickListener { viewModel.signOut() }
     }
 
     private fun handleState(state: ProfileViewState) {
@@ -35,7 +35,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun handleSideEffect(sideEffect: ProfileSideEffect) {
-
+        when(sideEffect) {
+            is ProfileSideEffect.SignOut -> {
+                activityNavController().navigate(
+                    directions = NavGraphDirections.actionGlobalOnboardingFragment()
+                )
+            }
+        }
     }
 
     private fun onAboutClick() {

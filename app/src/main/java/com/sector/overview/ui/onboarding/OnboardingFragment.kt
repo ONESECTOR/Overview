@@ -2,7 +2,6 @@ package com.sector.overview.ui.onboarding
 
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.navigation.fragment.findNavController
@@ -34,7 +33,6 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
             appendSpace(getString(R.string.onboarding_login_clickable_part)) {
                 color(R.color.purple_main)
                 click {
-                    Log.d("TAG!", "test")
                     findNavController().navigate(
                         directions = OnboardingFragmentDirections.actionOnboardingFragmentToLoginFragment()
                     )
@@ -57,7 +55,7 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
     private fun onOpenRegister() {
         findNavController().navigate(
-            directions = OnboardingFragmentDirections.actionOnboardingFragmentToLoginFragment()
+            directions = OnboardingFragmentDirections.actionOnboardingFragmentToRegisterFragment()
         )
     }
 }
