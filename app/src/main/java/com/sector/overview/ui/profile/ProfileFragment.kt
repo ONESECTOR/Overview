@@ -31,7 +31,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun handleState(state: ProfileViewState) {
-
+        viewBinding.tvUsername.text = state.nickname
     }
 
     private fun handleSideEffect(sideEffect: ProfileSideEffect) {
