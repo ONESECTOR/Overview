@@ -4,9 +4,11 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.tabs.TabLayoutMediator
 import com.sector.overview.R
 import com.sector.overview.databinding.FragmentHomeBinding
 import com.sector.overview.ui.home.adapter.HomeMoviesAdapter
+import com.sector.overview.ui.home.adapter.HomeReviewsAdapter
 import com.sector.overview.utils.spannableBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.orbitmvi.orbit.viewmodel.observe
@@ -34,10 +36,19 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
             }
         )
+        viewBinding.vpReviews.adapter = HomeReviewsAdapter(
+            onItemClick = {
+
+            }
+        )
+        TabLayoutMediator(viewBinding.circleIndicator, viewBinding.vpReviews) { _, _ ->
+
+        }.attach()
     }
 
     private fun handleState(state: FeedViewState) {
-        (viewBinding.rvMovies.adapter as HomeMoviesAdapter).items = state.items
+        (viewBinding.rvMovies.adapter as HomeMoviesAdapter).items = state.movies
+        (viewBinding.vpReviews.adapter as HomeReviewsAdapter).items = state.reviews
 
         viewBinding.tvGreetings.text = requireContext().spannableBuilder {
             append(getString(state.greetingsTitle))

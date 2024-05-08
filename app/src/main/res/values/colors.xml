@@ -14,5 +14,5 @@
     <color name="purple_background">#13111B</color>
     <color name="purple_main">#9370EC</color>
     <color name="purple_main_alpha_80">#509370EC</color>
-    <color name="purple_dark_card">#221D29</color>
+    <color name="card_color">#29262D</color>
 </resources>

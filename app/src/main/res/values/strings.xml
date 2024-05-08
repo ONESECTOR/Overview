@@ -46,14 +46,14 @@
     <string name="greetings_day">Добрый день,</string>
     <string name="greetings_evening">Добрый вечер,</string>
     <string name="greetings_night">Доброй ночи,</string>
+    <string name="home_rating">Рейтинг</string>
+    <string name="home_rating_percent">%1$d%%</string>
+    <string name="home_category_best">Лучшее</string>
+    <string name="home_category_action_all">Все</string>
+    <string name="home_category_popular_reviews">Популярные обзоры</string>
     
     <!-- Profile -->
     <string name="profile_common_category_title">Основные</string>
     <string name="profile_about">О приложении</string>
     <string name="profile_log_out">Выйти</string>
-
-    <!-- Home -->
-    <string name="home_category_best">Лучшее</string>
-    <string name="home_category_action_all">Все</string>
-    <string name="home_category_popular_reviews">Популярные обзоры</string>
 </resources>
