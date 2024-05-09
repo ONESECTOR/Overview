@@ -1,8 +1,451 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:background="@color/purple_background"
     tools:context=".ui.reviews.detail.ReviewDetailFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_cross"
+        app:titleCentered="true"
+        app:titleTextAppearance="@style/Title"
+        app:titleTextColor="@color/white_f2"
+        tools:title="Переводчик" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingTop="12dp"
+        android:paddingBottom="72dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_short_description_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/tt_norms_pro_medium"
+                android:text="@string/start_review_short_description_title"
+                android:textColor="@color/white_f2"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_short_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/tt_norms_pro_light"
+                android:textColor="@color/gray_80"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_short_description_title"
+                tools:text="Как всегда круто!" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_review_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="22dp"
+                android:fontFamily="@font/tt_norms_pro_medium"
+                android:text="@string/start_review_review_title"
+                android:textColor="@color/white_f2"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_short_description" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_review"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/tt_norms_pro_light"
+                android:textColor="@color/gray_80"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_review_title"
+                tools:text="Очень очень очень подробный обзор" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_plot_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="22dp"
+                android:fontFamily="@font/tt_norms_pro_medium"
+                android:text="@string/start_review_plot"
+                android:textColor="@color/white_f2"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_review" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/slider_plot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp"
+                android:enabled="false"
+                android:stepSize="1"
+                android:valueTo="20"
+                app:labelBehavior="gone"
+                app:layout_constraintTop_toBottomOf="@id/tv_plot_title"
+                app:thumbRadius="0dp"
+                app:trackColorActive="@color/purple_main"
+                app:trackColorInactive="@color/progress_secondary"
+                app:trackHeight="10dp"
+                tools:progress="13"
+                tools:value="13" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_plot_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:fontFamily="@font/tt_norms_pro_light"
+                android:textColor="@color/gray_80"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/slider_plot"
+                tools:text="13 / 20" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_acting_performance_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/tt_norms_pro_medium"
+                android:text="@string/start_review_acting_performance"
+                android:textColor="@color/white_f2"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_plot_value" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/slider_acting_performance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp"
+                android:enabled="false"
+                android:stepSize="1"
+                android:valueTo="15"
+                app:labelBehavior="gone"
+                app:layout_constraintTop_toBottomOf="@id/tv_acting_performance_title"
+                app:thumbRadius="0dp"
+                app:trackColorActive="@color/purple_main"
+                app:trackColorInactive="@color/progress_secondary"
+                app:trackHeight="10dp"
+                tools:progress="13"
+                tools:value="13" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_acting_performance_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:fontFamily="@font/tt_norms_pro_light"
+                android:textColor="@color/gray_80"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/slider_acting_performance"
+                tools:text="13 / 20" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_direction_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/tt_norms_pro_medium"
+                android:text="@string/start_review_direction"
+                android:textColor="@color/white_f2"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_acting_performance_value" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/slider_direction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp"
+                android:enabled="false"
+                android:stepSize="1"
+                android:valueTo="15"
+                app:labelBehavior="gone"
+                app:layout_constraintTop_toBottomOf="@id/tv_direction_title"
+                app:thumbRadius="0dp"
+                app:trackColorActive="@color/purple_main"
+                app:trackColorInactive="@color/progress_secondary"
+                app:trackHeight="10dp"
+                tools:progress="13"
+                tools:value="13" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_direction_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:fontFamily="@font/tt_norms_pro_light"
+                android:textColor="@color/gray_80"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/slider_direction"
+                tools:text="13 / 20" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_artistic_design_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/tt_norms_pro_medium"
+                android:text="@string/start_review_artistic_design"
+                android:textColor="@color/white_f2"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_direction_value" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/slider_artistic_design"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp"
+                android:enabled="false"
+                android:stepSize="1"
+                android:valueTo="15"
+                app:labelBehavior="gone"
+                app:layout_constraintTop_toBottomOf="@id/tv_artistic_design_title"
+                app:thumbRadius="0dp"
+                app:trackColorActive="@color/purple_main"
+                app:trackColorInactive="@color/progress_secondary"
+                app:trackHeight="10dp"
+                tools:progress="13"
+                tools:value="13" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_artistic_design_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:fontFamily="@font/tt_norms_pro_light"
+                android:textColor="@color/gray_80"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/slider_artistic_design"
+                tools:text="13 / 20" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_editing_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/tt_norms_pro_medium"
+                android:text="@string/start_review_editing"
+                android:textColor="@color/white_f2"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_artistic_design_value" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/slider_editing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp"
+                android:enabled="false"
+                android:stepSize="1"
+                android:valueTo="10"
+                app:labelBehavior="gone"
+                app:layout_constraintTop_toBottomOf="@id/tv_editing_title"
+                app:thumbRadius="0dp"
+                app:trackColorActive="@color/purple_main"
+                app:trackColorInactive="@color/progress_secondary"
+                app:trackHeight="10dp"
+                tools:progress="8"
+                tools:value="13" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_editing_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:fontFamily="@font/tt_norms_pro_light"
+                android:textColor="@color/gray_80"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/slider_editing"
+                tools:text="13 / 20" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_music_and_sound_design_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/tt_norms_pro_medium"
+                android:text="@string/start_review_music_and_sound_design"
+                android:textColor="@color/white_f2"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_editing_value" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/slider_music_and_sound_design"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp"
+                android:enabled="false"
+                android:stepSize="1"
+                android:valueTo="10"
+                app:labelBehavior="gone"
+                app:layout_constraintTop_toBottomOf="@id/tv_music_and_sound_design_title"
+                app:thumbRadius="0dp"
+                app:trackColorActive="@color/purple_main"
+                app:trackColorInactive="@color/progress_secondary"
+                app:trackHeight="10dp"
+                tools:progress="7"
+                tools:value="13" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_music_and_sound_design_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:fontFamily="@font/tt_norms_pro_light"
+                android:textColor="@color/gray_80"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/slider_music_and_sound_design"
+                tools:text="13 / 20" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_originality_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/tt_norms_pro_medium"
+                android:text="@string/start_review_originality"
+                android:textColor="@color/white_f2"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_music_and_sound_design_value" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/slider_originality"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp"
+                android:enabled="false"
+                android:stepSize="1"
+                android:valueTo="10"
+                app:labelBehavior="gone"
+                app:layout_constraintTop_toBottomOf="@id/tv_originality_title"
+                app:thumbRadius="0dp"
+                app:trackColorActive="@color/purple_main"
+                app:trackColorInactive="@color/progress_secondary"
+                app:trackHeight="10dp"
+                tools:progress="7"
+                tools:value="13" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_originality_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:fontFamily="@font/tt_norms_pro_light"
+                android:textColor="@color/gray_80"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/slider_originality"
+                tools:text="13 / 20" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_emotional_impact_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/tt_norms_pro_medium"
+                android:text="@string/start_review_emotional_impact"
+                android:textColor="@color/white_f2"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_originality_value" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/slider_emotional_impact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp"
+                android:enabled="false"
+                android:stepSize="1"
+                android:valueTo="5"
+                app:labelBehavior="gone"
+                app:layout_constraintTop_toBottomOf="@id/tv_emotional_impact_title"
+                app:thumbRadius="0dp"
+                app:trackColorActive="@color/purple_main"
+                app:trackColorInactive="@color/progress_secondary"
+                app:trackHeight="10dp"
+                tools:progress="2"
+                tools:value="13" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_emotional_impact_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:fontFamily="@font/tt_norms_pro_light"
+                android:textColor="@color/gray_80"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/slider_emotional_impact"
+                tools:text="13 / 20" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
