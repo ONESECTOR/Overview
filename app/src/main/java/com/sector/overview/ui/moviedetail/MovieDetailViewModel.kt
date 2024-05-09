@@ -1,18 +1,23 @@
 package com.sector.overview.ui.moviedetail
 
 import android.content.Context
+import androidx.lifecycle.viewModelScope
+import com.google.firebase.firestore.FirebaseFirestore
 import com.sector.domain.entity.firebase.Review
 import com.sector.domain.entity.kinopoisk.Movie
 import com.sector.domain.entity.kinopoisk.Person
 import com.sector.overview.R
 import com.sector.overview.utils.formatMovieLength
 import com.sector.ui.viewmodel.BaseViewModel
+import kotlinx.coroutines.launch
 import org.koin.core.component.inject
 import org.orbitmvi.orbit.syntax.simple.intent
+import org.orbitmvi.orbit.syntax.simple.postSideEffect
 import org.orbitmvi.orbit.syntax.simple.reduce
 
 internal class MovieDetailViewModel(
-    private val movie: Movie
+    private val movie: Movie,
+    private val firestoreDatabase: FirebaseFirestore
 ): BaseViewModel<MovieDetailViewState, MovieDetailSideEffect>(MovieDetailViewState()) {
 
     private val context: Context by inject()
@@ -41,6 +46,25 @@ internal class MovieDetailViewModel(
                 actors = movie.persons.filter { it.enProfession == "actor" }
             )
         }
+        firestoreDatabase.collection("reviews")
+            .whereEqualTo("movieId", movie.id.toString())
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                viewModelScope.launch {
+                    reduce {
+                        state.copy(
+                            reviews = querySnapshot.documents.mapNotNull { document ->
+                                document.toObject(Review::class.java)
+                            }
+                        )
+                    }
+                }
+            }
+            .addOnFailureListener {
+                viewModelScope.launch {
+                    postSideEffect(MovieDetailSideEffect.Toast(message = it.localizedMessage))
+                }
+            }
     }
 }
 
@@ -52,5 +76,5 @@ internal data class MovieDetailViewState(
 )
 
 internal sealed class MovieDetailSideEffect {
-
+    data class Toast(val message: String?): MovieDetailSideEffect()
 }

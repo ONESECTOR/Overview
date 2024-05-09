@@ -30,13 +30,13 @@ internal class MovieDetailReviewsAdapter(
     ) {
         bind {
             binding.apply {
-                root.setOnClickListener {
-                    tvShortDescription.text = item.shortDescription
-                    tvReview.text = item.reviewText
-                    item.sumRating?.let { rating ->
-                        tvRatingPercent.text = getString(R.string.movie_detail_rating_percent, rating)
-                    }
+                tvShortDescription.text = item.shortDescription
+                tvReview.text = item.reviewText
+                item.sumRating?.let { rating ->
+                    tvRatingPercent.text = getString(R.string.movie_detail_rating_percent, rating)
+                }
 
+                root.setOnClickListener {
                     onItemClick.invoke(item)
                 }
             }

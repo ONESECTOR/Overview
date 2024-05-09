@@ -22,7 +22,8 @@ val featureModule = module {
     viewModelOf(::ProfileViewModel)
     viewModel { params ->
         MovieDetailViewModel(
-            movie = params[0]
+            movie = params[0],
+            firestoreDatabase = get()
         )
     }
     viewModelOf(::ReviewsViewModel)

@@ -90,7 +90,7 @@ internal class StartReviewViewModel(
 
     fun sendReview(shortDescription: String, review: String) = intent {
         firestoreDatabase.collection("reviews")
-            .document(movie.id.toString())
+            .document(UUID.randomUUID().toString())
             .set(
                 Review(
                     movieId = movie.id.toString(),
