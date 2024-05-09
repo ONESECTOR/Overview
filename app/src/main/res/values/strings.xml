@@ -72,10 +72,10 @@
 
     <!-- Start Review -->
     <string name="start_review_short_description_title">Краткое описание</string>
-    <string name="start_review_short_description_hint">Лучшее, что я видел за последние несколько лет</string>
+    <string name="start_review_short_description_hint">Краткое описание</string>
     <string name="start_review_short_description_description">Буквально в несколько слов опишите общее впечатление о фильме, например: «Гай Ричи как всегда на высоте, а кто бы сомневался»</string>
     <string name="start_review_review_title">Рецензия</string>
-    <string name="start_review_review_hint">Пожалуй, я начну с…</string>
+    <string name="start_review_review_hint">Рецензия</string>
     <string name="start_review_review_description">Не жалейте букв, напишите максимально подробный отзыв с вашими впечатлениями о фильме, расскажите, что вам понравилось больше всего, и почему вы поставили ему именно такую оценку.</string>
     <string name="start_review_plot">Сюжет</string>
     <string name="start_review_acting_performance">Актерская игра</string>
@@ -86,4 +86,11 @@
     <string name="start_review_originality">Оригинальность/новаторство</string>
     <string name="start_review_emotional_impact">Эмоциональное воздействие</string>
     <string name="start_review_send">Отправить</string>
+
+    <!-- Review -->
+    <string name="review_empty_placeholder_title">Пусто :(</string>
+    <string name="review_empty_placeholder_description">Вы еще не написали ни одного обзора</string>
+    <string name="review_your_reviews_title">Ваши обзоры</string>
+    <string name="review_rating">Рейтинг</string>
+    <string name="review_rating_percent">%1$d%%</string>
 </resources>

@@ -37,7 +37,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/tt_norms_pro_medium"
                 android:text="@string/start_review_short_description_title"
                 android:textColor="@color/white_f2"
@@ -45,7 +45,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbar" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_short_description"
@@ -110,10 +110,11 @@
                 android:id="@+id/til_review"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="6dp"
                 android:hint="@string/start_review_review_hint"
+                android:scrollbars="vertical"
                 android:textColorHint="@color/gray_80"
                 app:boxCornerRadiusBottomEnd="12dp"
                 app:boxCornerRadiusBottomStart="12dp"
@@ -128,8 +129,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_review"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="150dp"
                     android:fontFamily="@font/tt_norms_pro_regular"
+                    android:gravity="top"
+                    android:inputType="text|textMultiLine"
                     android:textColor="@color/gray_80"
                     android:textSize="13sp" />
 

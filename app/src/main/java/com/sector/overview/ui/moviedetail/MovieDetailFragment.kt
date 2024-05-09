@@ -3,6 +3,7 @@ package com.sector.overview.ui.moviedetail
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -68,7 +69,11 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     }
 
     private fun handleSideEffect(sideEffect: MovieDetailSideEffect) {
-
+        when (sideEffect) {
+            is MovieDetailSideEffect.Toast -> {
+                Toast.makeText(requireContext(), sideEffect.message, Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun onOpenReview(review: Review) {
