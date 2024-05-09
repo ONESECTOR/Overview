@@ -1,6 +1,7 @@
 package com.sector.overview.ui.moviedetail
 
 import android.content.Context
+import com.sector.domain.entity.firebase.Review
 import com.sector.domain.entity.kinopoisk.Movie
 import com.sector.domain.entity.kinopoisk.Person
 import com.sector.overview.R
@@ -46,7 +47,8 @@ internal class MovieDetailViewModel(
 internal data class MovieDetailViewState(
     val movie: Movie? = null,
     val movieInfo: String? = null,
-    val actors: List<Person> = listOf()
+    val actors: List<Person> = listOf(),
+    val reviews: List<Review> = listOf()
 )
 
 internal sealed class MovieDetailSideEffect {

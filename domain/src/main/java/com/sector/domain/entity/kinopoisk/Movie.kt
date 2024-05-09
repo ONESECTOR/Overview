@@ -10,7 +10,7 @@ data class Movie(
     val year: Int,
     val description: String,
     val shortDescription: String,
-    val slogan: String,
+    val slogan: String?,
     val rating: Rating,
     val movieLength: Int,
     val ageRating: Int,

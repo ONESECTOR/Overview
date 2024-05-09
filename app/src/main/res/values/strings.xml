@@ -8,6 +8,10 @@
     <string name="search">Поиск</string>
     <string name="hint_email">Электронная почта</string>
     <string name="hint_password">Пароль</string>
+    <string name="review_value_max_20">%1$d / 20</string>
+    <string name="review_value_max_15">%1$d / 15</string>
+    <string name="review_value_max_10">%1$d / 10</string>
+    <string name="review_value_max_5">%1$d / 5</string>
 
     <!-- Bottom menu -->
     <string name="title_home">Главная</string>
@@ -64,4 +68,22 @@
     <string name="movie_detail_movie_info">%1$s • %2$d • %3$s</string>
     <string name="movie_detail_rating">Рейтинг</string>
     <string name="movie_detail_rating_percent">%1$d%%</string>
+    <string name="movie_detail_start_review">Написать обзор</string>
+
+    <!-- Start Review -->
+    <string name="start_review_short_description_title">Краткое описание</string>
+    <string name="start_review_short_description_hint">Лучшее, что я видел за последние несколько лет</string>
+    <string name="start_review_short_description_description">Буквально в несколько слов опишите общее впечатление о фильме, например: «Гай Ричи как всегда на высоте, а кто бы сомневался»</string>
+    <string name="start_review_review_title">Рецензия</string>
+    <string name="start_review_review_hint">Пожалуй, я начну с…</string>
+    <string name="start_review_review_description">Не жалейте букв, напишите максимально подробный отзыв с вашими впечатлениями о фильме, расскажите, что вам понравилось больше всего, и почему вы поставили ему именно такую оценку.</string>
+    <string name="start_review_plot">Сюжет</string>
+    <string name="start_review_acting_performance">Актерская игра</string>
+    <string name="start_review_direction">Режиссура</string>
+    <string name="start_review_artistic_design">Художественное оформление</string>
+    <string name="start_review_editing">Монтаж</string>
+    <string name="start_review_music_and_sound_design">Музыка и звуковое оформление</string>
+    <string name="start_review_originality">Оригинальность/новаторство</string>
+    <string name="start_review_emotional_impact">Эмоциональное воздействие</string>
+    <string name="start_review_send">Отправить</string>
 </resources>

@@ -15,4 +15,5 @@
     <color name="purple_main">#9370EC</color>
     <color name="purple_main_alpha_80">#509370EC</color>
     <color name="card_color">#29262D</color>
+    <color name="progress_secondary">#462E6D</color>
 </resources>

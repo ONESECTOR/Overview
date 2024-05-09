@@ -33,7 +33,7 @@
             <ImageView
                 android:id="@+id/iv_movie_poster"
                 android:layout_width="280dp"
-                android:layout_height="380dp"
+                android:layout_height="400dp"
                 android:layout_marginTop="25dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -158,5 +158,22 @@
 
     </androidx.core.widget.NestedScrollView>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_start_review"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/tt_norms_pro_medium"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:letterSpacing="-0.01"
+        android:text="@string/movie_detail_start_review"
+        android:textAllCaps="false"
+        android:textColor="@color/purple_background"
+        android:textSize="16sp"
+        app:backgroundTint="@color/purple_main"
+        app:cornerRadius="12dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

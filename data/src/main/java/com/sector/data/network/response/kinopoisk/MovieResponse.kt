@@ -19,7 +19,7 @@ internal data class MovieResponse(
     @SerialName(value = "shortDescription")
     val shortDescription: String,
     @SerialName(value = "slogan")
-    val slogan: String,
+    val slogan: String? = null,
     @SerialName(value = "rating")
     val rating: RatingResponse,
     @SerialName(value = "movieLength")

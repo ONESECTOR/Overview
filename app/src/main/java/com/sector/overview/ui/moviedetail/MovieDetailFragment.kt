@@ -3,15 +3,19 @@ package com.sector.overview.ui.moviedetail
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.sector.domain.entity.firebase.Review
+import com.sector.domain.entity.kinopoisk.Movie
+import com.sector.overview.NavGraphDirections
 import com.sector.overview.R
 import com.sector.overview.databinding.FragmentMovieDetailBinding
 import com.sector.overview.ui.moviedetail.adapter.MovieDetailActorsAdapter
 import com.sector.overview.ui.moviedetail.adapter.MovieDetailReviewsAdapter
+import com.sector.overview.utils.activityNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import org.orbitmvi.orbit.viewmodel.observe
@@ -37,6 +41,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
             sideEffect = ::handleSideEffect
         )
 
+        viewBinding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
         viewBinding.rvActors.adapter = MovieDetailActorsAdapter()
         viewBinding.rvReviews.adapter = MovieDetailReviewsAdapter(
             onItemClick = { review ->
@@ -46,14 +51,20 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     }
 
     private fun handleState(state: MovieDetailViewState) {
-        viewBinding.tvMovieName.text = state.movie?.name
-        viewBinding.tvMovieInfo.text = state.movieInfo
-        viewBinding.ivMoviePoster.load(state.movie?.poster?.previewUrl) {
-            transformations(RoundedCornersTransformation(32f))
+        state.movie?.let { movie ->
+            viewBinding.tvMovieName.text = movie.name
+            viewBinding.tvDescription.text = movie.description
+            viewBinding.ivMoviePoster.load(movie.poster.previewUrl) {
+                transformations(RoundedCornersTransformation(32f))
+            }
+
+            viewBinding.btnStartReview.setOnClickListener { onOpenStartReview(movie) }
         }
 
+        viewBinding.tvMovieInfo.text = state.movieInfo
+
         (viewBinding.rvActors.adapter as MovieDetailActorsAdapter).items = state.actors
-        //(viewBinding.rvReviews.adapter as MovieDetailReviewsAdapter).items = state.reviews
+        (viewBinding.rvReviews.adapter as MovieDetailReviewsAdapter).items = state.reviews
     }
 
     private fun handleSideEffect(sideEffect: MovieDetailSideEffect) {
@@ -61,6 +72,14 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     }
 
     private fun onOpenReview(review: Review) {
+        activityNavController().navigate(
+            directions = NavGraphDirections.actionGlobalReviewDetailFragment(review)
+        )
+    }
 
+    private fun onOpenStartReview(movie: Movie) {
+        activityNavController().navigate(
+            directions = NavGraphDirections.actionGlobalStartReviewFragment(movie)
+        )
     }
 }
