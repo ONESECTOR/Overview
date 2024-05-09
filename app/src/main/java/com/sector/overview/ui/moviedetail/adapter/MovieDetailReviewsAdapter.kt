@@ -1,27 +1,27 @@
-package com.sector.overview.ui.home.adapter
+package com.sector.overview.ui.moviedetail.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import com.sector.domain.entity.firebase.Review
 import com.sector.overview.R
-import com.sector.overview.databinding.ItemHomeReviewBinding
+import com.sector.overview.databinding.ItemMovieDetailReviewBinding
 
-class HomeReviewsAdapter(
+internal class MovieDetailReviewsAdapter(
     private val onItemClick: (Review) -> Unit
-) : AsyncListDifferDelegationAdapter<Review>(HomeReviewDiffUtilCallback()) {
+) : AsyncListDifferDelegationAdapter<Review>(FeedDiffUtilCallback()) {
 
     init {
         with(delegatesManager) {
-            addDelegate(reviewDelegateAdapter(onItemClick))
+            addDelegate(reviewAdapterDelegate(onItemClick))
         }
     }
 
-    private fun reviewDelegateAdapter(
+    private fun reviewAdapterDelegate(
         onItemClick: (Review) -> Unit
-    ) = adapterDelegateViewBinding<Review, Review, ItemHomeReviewBinding>(
+    ) = adapterDelegateViewBinding<Review, Review, ItemMovieDetailReviewBinding>(
         viewBinding = { layoutInflater, parent ->
-            ItemHomeReviewBinding.inflate(
+            ItemMovieDetailReviewBinding.inflate(
                 layoutInflater,
                 parent,
                 false
@@ -30,15 +30,13 @@ class HomeReviewsAdapter(
     ) {
         bind {
             binding.apply {
-                tvAuthorNickname.text = item.authorNickname
-                tvReviewShortDescription.text = item.shortDescription
-                tvReviewText.text = item.reviewText
-                item.sumRating?.let { rating ->
-                    tvMovieRating.text = getString(R.string.home_rating_percent, rating)
-                }
-                tvMovieName.text = item.movieName
-
                 root.setOnClickListener {
+                    tvShortDescription.text = item.shortDescription
+                    tvReview.text = item.reviewText
+                    item.sumRating?.let { rating ->
+                        tvRatingPercent.text = getString(R.string.movie_detail_rating_percent, rating)
+                    }
+
                     onItemClick.invoke(item)
                 }
             }
@@ -46,7 +44,7 @@ class HomeReviewsAdapter(
     }
 }
 
-private class HomeReviewDiffUtilCallback : DiffUtil.ItemCallback<Review>() {
+private class FeedDiffUtilCallback : DiffUtil.ItemCallback<Review>() {
 
     override fun areItemsTheSame(oldItem: Review, newItem: Review): Boolean =
         oldItem == newItem

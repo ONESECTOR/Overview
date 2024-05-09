@@ -72,7 +72,11 @@
         android:id="@+id/movieDetailFragment"
         android:name="com.sector.overview.ui.moviedetail.MovieDetailFragment"
         android:label="fragment_movie_detail"
-        tools:layout="@layout/fragment_movie_detail" />
+        tools:layout="@layout/fragment_movie_detail" >
+        <argument
+            android:name="movie"
+            app:argType="com.sector.domain.entity.kinopoisk.Movie" />
+    </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.sector.overview.ui.about.AboutFragment"
@@ -83,4 +87,25 @@
         app:destination="@id/onboardingFragment"
         app:popUpTo="@id/nav_graph"
         app:popUpToInclusive="true" />
+    <action android:id="@+id/action_global_movieDetailFragment" app:destination="@id/movieDetailFragment" />
+    <fragment
+        android:id="@+id/reviewDetailFragment"
+        android:name="com.sector.overview.ui.reviews.detail.ReviewDetailFragment"
+        android:label="fragment_review_detail"
+        tools:layout="@layout/fragment_review_detail" >
+        <argument
+            android:name="review"
+            app:argType="com.sector.domain.entity.firebase.Review" />
+    </fragment>
+    <fragment
+        android:id="@+id/startReviewFragment"
+        android:name="com.sector.overview.ui.reviews.start.StartReviewFragment"
+        android:label="fragment_start_review"
+        tools:layout="@layout/fragment_start_review" >
+        <argument
+            android:name="movie"
+            app:argType="com.sector.domain.entity.kinopoisk.Movie" />
+    </fragment>
+    <action android:id="@+id/action_global_reviewDetailFragment" app:destination="@id/reviewDetailFragment" />
+    <action android:id="@+id/action_global_startReviewFragment" app:destination="@id/startReviewFragment" />
 </navigation>

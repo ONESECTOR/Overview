@@ -51,9 +51,17 @@
     <string name="home_category_best">Лучшее</string>
     <string name="home_category_action_all">Все</string>
     <string name="home_category_popular_reviews">Популярные обзоры</string>
-    
+
     <!-- Profile -->
     <string name="profile_common_category_title">Основные</string>
     <string name="profile_about">О приложении</string>
     <string name="profile_log_out">Выйти</string>
+
+    <!-- Movie Detail -->
+    <string name="movie_detail_title_description">Сюжет</string>
+    <string name="movie_detail_title_actors">Актеры</string>
+    <string name="movie_detail_title_reviews">Обзоры</string>
+    <string name="movie_detail_movie_info">%1$s • %2$d • %3$s</string>
+    <string name="movie_detail_rating">Рейтинг</string>
+    <string name="movie_detail_rating_percent">%1$d%%</string>
 </resources>

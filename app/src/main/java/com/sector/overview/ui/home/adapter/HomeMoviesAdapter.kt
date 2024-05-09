@@ -10,7 +10,7 @@ import com.sector.domain.entity.kinopoisk.Movie
 import com.sector.overview.databinding.ItemHomeMovieBinding
 
 internal class HomeMoviesAdapter(
-    private val onItemClick: () -> Unit
+    private val onItemClick: (Movie) -> Unit
 ): AsyncListDifferDelegationAdapter<HomeItem>(FeedDiffUtilCallback()) {
 
     init {
@@ -26,7 +26,7 @@ internal class HomeMoviesAdapter(
     }
 
     private fun movieDelegate(
-        onItemClick: () -> Unit
+        onItemClick: (Movie) -> Unit
     ) = adapterDelegateViewBinding<Movie, HomeItem, ItemHomeMovieBinding>(
         viewBinding = { layoutInflater, parent ->
             ItemHomeMovieBinding.inflate(
@@ -54,7 +54,7 @@ internal class HomeMoviesAdapter(
                     }
 
                 root.setOnClickListener {
-                    onItemClick.invoke()
+                    onItemClick.invoke(item)
                 }
             }
         }

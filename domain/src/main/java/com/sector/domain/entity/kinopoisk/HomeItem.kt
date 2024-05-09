@@ -1,5 +1,7 @@
 package com.sector.domain.entity.kinopoisk
 
-interface HomeItem {
+import android.os.Parcelable
+
+interface HomeItem : Parcelable {
 
 }

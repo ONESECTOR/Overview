@@ -1,5 +1,8 @@
 package com.sector.domain.entity.kinopoisk
 
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Movie(
     val id: Int,
     val name: String,
@@ -16,7 +19,7 @@ data class Movie(
     val genres: List<Genre>,
     val countries: List<Country>,
     val persons: List<Person>
-): HomeItem {
+) : HomeItem {
 
     enum class Type {
         SERIES,
