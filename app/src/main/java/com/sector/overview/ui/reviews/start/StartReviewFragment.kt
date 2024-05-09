@@ -34,6 +34,12 @@ class StartReviewFragment : Fragment(R.layout.fragment_start_review) {
         )
 
         viewBinding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
+        viewBinding.btnSend.setOnClickListener {
+            viewModel.sendReview(
+                shortDescription = viewBinding.etShortDescription.text.toString(),
+                review = viewBinding.etReview.text.toString()
+            )
+        }
 
         viewBinding.sliderPlot.addOnChangeListener { _, value, _ ->
             viewModel.onChangePlotValue(value)

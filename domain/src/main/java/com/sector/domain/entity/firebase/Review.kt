@@ -21,4 +21,26 @@ data class Review(
     val musicAndSoundDesign: Int? = null,
     val originality: Int? = null,
     val emotionalImpact: Int? = null
-) : Parcelable
+) : Parcelable {
+
+    fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "movieId" to movieId,
+            "reviewId" to reviewId,
+            "movieName" to movieName,
+            "userId" to userId,
+            "authorNickname" to authorNickname,
+            "shortDescription" to shortDescription,
+            "reviewText" to reviewText,
+            "sumRating" to sumRating,
+            "plotRating" to plotRating,
+            "actingPerformance" to actingPerformance,
+            "direction" to direction,
+            "artisticDesign" to artisticDesign,
+            "editing" to editing,
+            "musicAndSoundDesign" to musicAndSoundDesign,
+            "originality" to originality,
+            "emotionalImpact" to emotionalImpact
+        )
+    }
+}

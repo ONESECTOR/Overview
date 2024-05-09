@@ -36,7 +36,10 @@ val featureModule = module {
     }
     viewModel { params ->
         StartReviewViewModel(
-            movie = params[0]
+            movie = params[0],
+            firestoreDatabase = get(),
+            firebaseAuth = get(),
+            userService = get()
         )
     }
 }
