@@ -41,7 +41,9 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
         }
 
         viewBinding.btnStart.setOnClickListener {
-            onOpenRegister()
+            findNavController().navigate(
+                directions = OnboardingFragmentDirections.actionOnboardingFragmentToRegisterFragment()
+            )
         }
     }
 
@@ -51,11 +53,5 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
 
     private fun handleSideEffect(sideEffect: OnboardingSideEffect) {
 
-    }
-
-    private fun onOpenRegister() {
-        findNavController().navigate(
-            directions = OnboardingFragmentDirections.actionOnboardingFragmentToRegisterFragment()
-        )
     }
 }
