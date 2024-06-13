@@ -9,12 +9,14 @@ class UserService {
     private val _authState = MutableStateFlow(AuthState())
     val authState = _authState.asStateFlow()
 
-    fun login(email: String?, password: String?, nickname: String?) {
+    fun login(id: String?, email: String?, password: String?, nickname: String?) {
         _authState.update { state ->
             state.copy(
+                id = id,
                 email = email,
                 password = password,
-                nickname = nickname
+                nickname = nickname,
+                loginState = LoginState.LoggedIn
             )
         }
     }
@@ -25,7 +27,14 @@ class UserService {
 }
 
 data class AuthState(
+    val id: String? = null,
     val email: String? = null,
     val password: String? = null,
-    val nickname: String? = null
+    val nickname: String? = null,
+    val loginState: LoginState = LoginState.None
 )
+
+enum class LoginState {
+    LoggedIn,
+    None
+}

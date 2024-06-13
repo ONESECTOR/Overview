@@ -121,7 +121,9 @@ internal class StartReviewViewModel(
                 ).toMap()
             )
             .addOnSuccessListener {
-
+                viewModelScope.launch {
+                    postSideEffect(StartReviewSideEffect.SuccessDialog)
+                }
             }
             .addOnFailureListener {
                 viewModelScope.launch {
@@ -151,4 +153,6 @@ internal data class StartReviewViewState(
 
 internal sealed class StartReviewSideEffect {
     data class Toast(val message: String?): StartReviewSideEffect()
+
+    data object SuccessDialog: StartReviewSideEffect()
 }

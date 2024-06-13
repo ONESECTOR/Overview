@@ -4,6 +4,15 @@
     <string name="vk_url">https://vk.com/onesector</string>
     <string name="telegram_url">https://t.me/onesector</string>
 
+    <string name="status_novice">Новичок</string>
+    <string name="status_enthusiast">Знаток</string>
+    <string name="status_cinephile">Кинолюбитель</string>
+    <string name="status_amateur_critic">Кинокритик-любитель</string>
+    <string name="status_experienced_critic">Опытный кинокритик</string>
+    <string name="status_expert_critic">Кинокритик-эксперт</string>
+    <string name="status_master_critic">Кинокритик-мастер</string>
+    <string name="status_legendary_critic">Легендарный кинокритик</string>
+
     <!-- Common -->
     <string name="search">Поиск</string>
     <string name="hint_email">Электронная почта</string>

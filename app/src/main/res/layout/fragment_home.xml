@@ -25,6 +25,7 @@
             tools:text="Доброе утро,\nВсеволод Сокур" />
 
         <ImageView
+            android:id="@+id/iv_logo"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginEnd="32dp"

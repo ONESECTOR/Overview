@@ -8,6 +8,7 @@ import com.sector.ui.viewmodel.BaseViewModel
 import kotlinx.coroutines.launch
 import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.postSideEffect
+import java.util.UUID
 
 internal class RegisterViewModel(
     private val firebaseAuth: FirebaseAuth,
@@ -22,6 +23,7 @@ internal class RegisterViewModel(
                         .document(user.uid)
                         .set(
                             User(
+                                id = UUID.randomUUID().toString(),
                                 email = user.email,
                                 password = password,
                                 nickname = nickname

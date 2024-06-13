@@ -14,6 +14,7 @@ import com.sector.domain.entity.kinopoisk.Movie
 import com.sector.overview.NavGraphDirections
 import com.sector.overview.R
 import com.sector.overview.databinding.FragmentMovieDetailBinding
+import com.sector.overview.di.services.LoginState
 import com.sector.overview.ui.moviedetail.adapter.MovieDetailActorsAdapter
 import com.sector.overview.ui.moviedetail.adapter.MovieDetailReviewsAdapter
 import com.sector.overview.utils.activityNavController
@@ -59,10 +60,28 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
                 transformations(RoundedCornersTransformation(32f))
             }
 
-            viewBinding.btnStartReview.setOnClickListener { onOpenStartReview(movie) }
+            when(state.authState?.loginState) {
+                LoginState.LoggedIn -> {
+                    viewBinding.btnStartReview.visibility = View.VISIBLE
+                    viewBinding.btnStartReview.setOnClickListener {
+                        onOpenStartReview(movie)
+                    }
+                }
+                else -> {
+                    viewBinding.btnStartReview.visibility = View.GONE
+                }
+            }
         }
 
         viewBinding.tvMovieInfo.text = state.movieInfo
+
+        if (state.reviews.isEmpty()) {
+            viewBinding.tvTitleReviews.visibility = View.GONE
+            viewBinding.rvReviews.visibility = View.GONE
+        } else {
+            viewBinding.tvTitleReviews.visibility = View.VISIBLE
+            viewBinding.rvReviews.visibility = View.VISIBLE
+        }
 
         (viewBinding.rvActors.adapter as MovieDetailActorsAdapter).items = state.actors
         (viewBinding.rvReviews.adapter as MovieDetailReviewsAdapter).items = state.reviews

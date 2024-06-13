@@ -58,6 +58,8 @@ class HostFragment : NavigationRootFragment(), ExternalNavigation, ExtrasProvide
         val firstLaunch = fragment?.childFragmentManager?.fragments?.isEmpty() != false
         if (firstLaunch) {
             switchToGraph(R.navigation.home_graph, 0)
+        } else {
+            switchToGraph(R.navigation.profile_graph, 2)
         }
     }
 

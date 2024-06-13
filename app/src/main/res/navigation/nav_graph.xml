@@ -56,6 +56,9 @@
         <action
             android:id="@+id/action_onboardingFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_onboardingFragment_to_hostFragment"
+            app:destination="@id/hostFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -107,5 +110,5 @@
             app:argType="com.sector.domain.entity.kinopoisk.Movie" />
     </fragment>
     <action android:id="@+id/action_global_reviewDetailFragment" app:destination="@id/reviewDetailFragment" />
-    <action android:id="@+id/action_global_startReviewFragment" app:destination="@id/startReviewFragment" />
+    <action android:id="@+id/action_global_startReviewFragment" app:destination="@id/startReviewFragment" /><action android:id="@+id/action_global_loginFragment" app:destination="@id/loginFragment"/>
 </navigation>

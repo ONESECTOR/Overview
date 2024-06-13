@@ -8,6 +8,7 @@ import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.sector.overview.R
 import com.sector.overview.databinding.FragmentStartReviewBinding
+import com.sector.overview.ui.dialogs.SuccessDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import org.orbitmvi.orbit.viewmodel.observe
@@ -21,6 +22,14 @@ class StartReviewFragment : Fragment(R.layout.fragment_start_review) {
     private val viewModel by viewModel<StartReviewViewModel> {
         parametersOf(
             args.movie
+        )
+    }
+
+    private val successDialog: SuccessDialog by lazy {
+        SuccessDialog(
+            onCloseDialog = {
+                findNavController().popBackStack()
+            }
         )
     }
 
@@ -81,6 +90,13 @@ class StartReviewFragment : Fragment(R.layout.fragment_start_review) {
     }
 
     private fun handleSideEffect(sideEffect: StartReviewSideEffect) {
+        when(sideEffect) {
+            is StartReviewSideEffect.SuccessDialog -> {
+                successDialog.show(childFragmentManager, SuccessDialog.SUCCESS_DIALOG_TAG)
+            }
+            else -> {
 
+            }
+        }
     }
 }

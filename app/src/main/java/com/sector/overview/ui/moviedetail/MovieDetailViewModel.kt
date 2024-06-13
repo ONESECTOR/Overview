@@ -7,6 +7,8 @@ import com.sector.domain.entity.firebase.Review
 import com.sector.domain.entity.kinopoisk.Movie
 import com.sector.domain.entity.kinopoisk.Person
 import com.sector.overview.R
+import com.sector.overview.di.services.AuthState
+import com.sector.overview.di.services.UserService
 import com.sector.overview.utils.formatMovieLength
 import com.sector.ui.viewmodel.BaseViewModel
 import kotlinx.coroutines.launch
@@ -17,13 +19,25 @@ import org.orbitmvi.orbit.syntax.simple.reduce
 
 internal class MovieDetailViewModel(
     private val movie: Movie,
-    private val firestoreDatabase: FirebaseFirestore
+    private val firestoreDatabase: FirebaseFirestore,
+    private val userService: UserService
 ): BaseViewModel<MovieDetailViewState, MovieDetailSideEffect>(MovieDetailViewState()) {
 
     private val context: Context by inject()
 
     init {
         initialize()
+        getAuthState()
+    }
+
+    private fun getAuthState() = intent {
+        userService.authState.collect { authState ->
+            reduce {
+                state.copy(
+                    authState = authState
+                )
+            }
+        }
     }
 
     private fun initialize() = intent {
@@ -72,7 +86,8 @@ internal data class MovieDetailViewState(
     val movie: Movie? = null,
     val movieInfo: String? = null,
     val actors: List<Person> = listOf(),
-    val reviews: List<Review> = listOf()
+    val reviews: List<Review> = listOf(),
+    val authState: AuthState? = null
 )
 
 internal sealed class MovieDetailSideEffect {

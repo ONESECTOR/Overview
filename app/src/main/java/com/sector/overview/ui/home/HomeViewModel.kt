@@ -3,17 +3,21 @@ package com.sector.overview.ui.home
 import android.content.Context
 import android.util.Log
 import androidx.annotation.StringRes
+import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.FirebaseFirestore
 import com.sector.domain.entity.firebase.Review
 import com.sector.domain.entity.kinopoisk.Category
 import com.sector.domain.usecase.kinopoisk.KinopoiskUseCase
 import com.sector.domain.entity.kinopoisk.HomeItem
 import com.sector.overview.R
+import com.sector.overview.di.services.AuthState
 import com.sector.overview.di.services.UserService
 import com.sector.ui.viewmodel.BaseViewModel
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.launch
 import org.koin.core.component.inject
 import org.orbitmvi.orbit.syntax.simple.intent
+import org.orbitmvi.orbit.syntax.simple.postSideEffect
 import org.orbitmvi.orbit.syntax.simple.reduce
 import java.util.Calendar
 
@@ -28,6 +32,7 @@ internal class HomeViewModel(
     init {
         setGreeting()
         getMovies()
+        getPopularReviews()
     }
 
     private fun setGreeting() = intent {
@@ -40,7 +45,7 @@ internal class HomeViewModel(
                         in 18..22 -> R.string.greetings_evening
                         else -> R.string.greetings_night
                     },
-                    nickname = authState.nickname
+                    authState = authState
                 )
             }
         }
@@ -59,12 +64,6 @@ internal class HomeViewModel(
             .collect { movies ->
                 reduce {
                     state.copy(
-                        greetingsTitle = when (Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) {
-                            in 6..11 -> R.string.greetings_morning
-                            in 12..17 -> R.string.greetings_day
-                            in 18..22 -> R.string.greetings_evening
-                            else -> R.string.greetings_night
-                        },
                         movies = movies,
                         reviews = listOf(
                             Review(
@@ -86,16 +85,38 @@ internal class HomeViewModel(
                 }
             }
     }
+
+    private fun getPopularReviews()  = intent {
+        firestoreDatabase.collection("reviews")
+            .whereGreaterThan("usefulRating", 10)
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                viewModelScope.launch {
+                    reduce {
+                        state.copy(
+                            reviews = querySnapshot.documents.mapNotNull { document ->
+                                document.toObject(Review::class.java)
+                            }
+                        )
+                    }
+                }
+            }
+            .addOnFailureListener {
+                viewModelScope.launch {
+                    postSideEffect(FeedSideEffect.Toast(message = it.localizedMessage))
+                }
+            }
+    }
 }
 
 internal data class FeedViewState(
     val movies: List<HomeItem>? = null,
     val reviews: List<Review>? = null,
     val categories: List<Category> = listOf(),
-    val nickname: String? = null,
+    val authState: AuthState? = null,
     @StringRes val greetingsTitle: Int = 0
 )
 
 internal sealed class FeedSideEffect {
-
+    data class Toast(val message: String?) : FeedSideEffect()
 }

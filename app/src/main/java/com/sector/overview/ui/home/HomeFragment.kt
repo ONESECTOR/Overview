@@ -10,6 +10,8 @@ import com.sector.domain.entity.kinopoisk.Movie
 import com.sector.overview.NavGraphDirections
 import com.sector.overview.R
 import com.sector.overview.databinding.FragmentHomeBinding
+import com.sector.overview.di.services.AuthState
+import com.sector.overview.di.services.LoginState
 import com.sector.overview.ui.home.adapter.HomeMoviesAdapter
 import com.sector.overview.ui.home.adapter.HomeReviewsAdapter
 import com.sector.overview.utils.activityNavController
@@ -54,9 +56,20 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         (viewBinding.rvMovies.adapter as HomeMoviesAdapter).items = state.movies
         (viewBinding.vpReviews.adapter as HomeReviewsAdapter).items = state.reviews
 
+        when(state.authState?.loginState) {
+            LoginState.LoggedIn -> {
+                viewBinding.tvGreetings.visibility = View.VISIBLE
+                viewBinding.ivLogo.visibility = View.VISIBLE
+            }
+            else -> {
+                viewBinding.tvGreetings.visibility = View.GONE
+                viewBinding.ivLogo.visibility = View.GONE
+            }
+        }
+
         viewBinding.tvGreetings.text = requireContext().spannableBuilder {
             append(getString(state.greetingsTitle))
-            appendLn(state.nickname.toString()) {
+            appendLn(state.authState?.nickname.toString()) {
                 color(R.color.white_f2)
             }
         }

@@ -7,6 +7,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.sector.overview.NavGraphDirections
 import com.sector.overview.R
 import com.sector.overview.databinding.FragmentProfileBinding
+import com.sector.overview.di.services.LoginState
 import com.sector.overview.utils.activityNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.orbitmvi.orbit.viewmodel.observe
@@ -28,10 +29,23 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         viewBinding.btnAbout.setOnClickListener { onAboutClick() }
         viewBinding.btnLogOut.setOnClickListener { viewModel.signOut() }
+        //viewBinding.btnLogin.setOnClickListener { onGoToAuth() }
     }
 
     private fun handleState(state: ProfileViewState) {
-        viewBinding.tvUsername.text = state.nickname
+        when(state.authState?.loginState) {
+            LoginState.LoggedIn -> {
+                viewBinding.tvUsername.visibility = View.VISIBLE
+                viewBinding.tvStatus.visibility = View.VISIBLE
+                viewBinding.btnLogOut.visibility = View.VISIBLE
+                viewBinding.tvUsername.text = state.authState.nickname
+            }
+            else -> {
+                viewBinding.tvUsername.visibility = View.GONE
+                viewBinding.tvStatus.visibility = View.GONE
+                viewBinding.btnLogOut.visibility = View.GONE
+            }
+        }
     }
 
     private fun handleSideEffect(sideEffect: ProfileSideEffect) {
@@ -41,12 +55,21 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     directions = NavGraphDirections.actionGlobalOnboardingFragment()
                 )
             }
+            else -> {
+
+            }
         }
     }
 
     private fun onAboutClick() {
         activityNavController().navigate(
             directions = NavGraphDirections.actionGlobalAboutFragment()
+        )
+    }
+
+    private fun onGoToAuth() {
+        activityNavController().navigate(
+            directions = NavGraphDirections.actionGlobalLoginFragment()
         )
     }
 }

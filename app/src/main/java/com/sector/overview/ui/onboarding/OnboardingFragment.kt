@@ -45,6 +45,11 @@ class OnboardingFragment : Fragment(R.layout.fragment_onboarding) {
                 directions = OnboardingFragmentDirections.actionOnboardingFragmentToRegisterFragment()
             )
         }
+        viewBinding.btnSkip.setOnClickListener {
+            findNavController().navigate(
+                directions = OnboardingFragmentDirections.actionOnboardingFragmentToHostFragment()
+            )
+        }
     }
 
     private fun handleState(state: OnboardingViewState) {

@@ -26,6 +26,7 @@ internal class LoginViewModel(
                         .addOnSuccessListener { document ->
                             val currentUser = document.toObject(User::class.java)
                             userService.login(
+                                id = currentUser?.id,
                                 email = currentUser?.email,
                                 password = currentUser?.password,
                                 nickname = currentUser?.nickname
