@@ -34,6 +34,9 @@ internal class HomeViewModel(
         getMovies()
         getPopularReviews()
         getReviewsWithBestPlot()
+        println(1)
+        println(2)
+        println(3)
     }
 
     private fun setGreeting() = intent {
