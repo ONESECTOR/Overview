@@ -86,6 +86,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun onOpenReviewDetail(review: Review) {
-
+        activityNavController().navigate(
+            directions = NavGraphDirections.actionGlobalReviewDetailFragment(review)
+        )
     }
 }
