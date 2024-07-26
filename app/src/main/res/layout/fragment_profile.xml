@@ -7,6 +7,7 @@
     tools:background="@color/purple_background"
     tools:context=".ui.profile.ProfileFragment">
 
+    <!-- git test -->
     <ImageView
         android:id="@+id/iv_profile"
         android:layout_width="100dp"
