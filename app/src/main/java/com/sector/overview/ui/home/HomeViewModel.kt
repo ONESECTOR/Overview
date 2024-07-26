@@ -38,6 +38,7 @@ internal class HomeViewModel(
         println(2)
         println(3)
         println(4)
+        println(5)
     }
 
     private fun setGreeting() = intent {
