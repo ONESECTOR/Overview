@@ -43,6 +43,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
             sideEffect = ::handleSideEffect
         )
         println()
+        println()
 
         viewBinding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
         viewBinding.rvActors.adapter = MovieDetailActorsAdapter()
