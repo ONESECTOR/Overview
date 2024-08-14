@@ -24,6 +24,8 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
         viewBinding.btnTelegram.setOnClickListener { onOpenBrowser(getString(R.string.telegram_url)) }
         viewBinding.tvAppVersion.text = getString(R.string.about_version, BuildConfig.VERSION_NAME)
         viewBinding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
+
+        println()
     }
 
     private fun onOpenBrowser(url: String) {
