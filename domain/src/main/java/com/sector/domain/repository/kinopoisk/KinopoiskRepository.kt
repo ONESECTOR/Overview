@@ -6,4 +6,6 @@ import kotlinx.coroutines.flow.Flow
 interface KinopoiskRepository {
 
     suspend fun getMovies(): Flow<List<Movie>>
+
+    suspend fun search(query: String): Flow<List<Movie>>
 }

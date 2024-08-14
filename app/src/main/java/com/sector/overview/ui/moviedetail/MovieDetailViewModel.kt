@@ -16,6 +16,7 @@ import org.koin.core.component.inject
 import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.postSideEffect
 import org.orbitmvi.orbit.syntax.simple.reduce
+import org.orbitmvi.orbit.syntax.simple.repeatOnSubscription
 
 internal class MovieDetailViewModel(
     private val movie: Movie,
@@ -28,6 +29,7 @@ internal class MovieDetailViewModel(
     init {
         initialize()
         getAuthState()
+        getReviews()
     }
 
     private fun getAuthState() = intent {
@@ -60,26 +62,32 @@ internal class MovieDetailViewModel(
                 actors = movie.persons.filter { it.enProfession == "actor" }
             )
         }
-        firestoreDatabase.collection("reviews")
-            .whereEqualTo("movieId", movie.id.toString())
-            .get()
-            .addOnSuccessListener { querySnapshot ->
-                viewModelScope.launch {
-                    reduce {
-                        state.copy(
-                            reviews = querySnapshot.documents.mapNotNull { document ->
-                                document.toObject(Review::class.java)
-                            }
-                        )
+    }
+
+    private fun getReviews() = intent{
+        repeatOnSubscription {
+            firestoreDatabase.collection("reviews")
+                .whereEqualTo("movieId", movie.id.toString())
+                .get()
+                .addOnSuccessListener { querySnapshot ->
+                    viewModelScope.launch {
+                        reduce {
+                            state.copy(
+                                reviews = querySnapshot.documents.mapNotNull { document ->
+                                    document.toObject(Review::class.java)
+                                }
+                            )
+                        }
                     }
                 }
-            }
-            .addOnFailureListener {
-                viewModelScope.launch {
-                    postSideEffect(MovieDetailSideEffect.Toast(message = it.localizedMessage))
+                .addOnFailureListener {
+                    viewModelScope.launch {
+                        postSideEffect(MovieDetailSideEffect.Toast(message = it.localizedMessage))
+                    }
                 }
-            }
+        }
     }
+
 }
 
 internal data class MovieDetailViewState(

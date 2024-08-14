@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/tt_norms_pro_regular"
         android:paddingHorizontal="18dp"
-        android:paddingVertical="15dp"
+        android:paddingVertical="12dp"
         android:textAlignment="center"
         android:textColor="@color/gray_97"
         android:textSize="14sp"
