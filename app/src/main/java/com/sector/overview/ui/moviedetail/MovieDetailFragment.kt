@@ -87,6 +87,10 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         (viewBinding.rvReviews.adapter as MovieDetailReviewsAdapter).items = state.reviews
 
         println()
+        println()
+        println()
+        println()
+        println()
     }
 
     private fun handleSideEffect(sideEffect: MovieDetailSideEffect) {
