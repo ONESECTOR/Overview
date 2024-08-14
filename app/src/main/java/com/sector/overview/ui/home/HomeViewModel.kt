@@ -33,6 +33,14 @@ internal class HomeViewModel(
         setGreeting()
         getMovies()
         getPopularReviews()
+        getReviewsWithBestPlot()
+        println(1)
+        println(2)
+        println(3)
+        println(4)
+        println(5)
+        println(6)
+        println(7)
     }
 
     private fun setGreeting() = intent {
@@ -89,6 +97,28 @@ internal class HomeViewModel(
     private fun getPopularReviews()  = intent {
         firestoreDatabase.collection("reviews")
             .whereGreaterThan("usefulRating", 10)
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                viewModelScope.launch {
+                    reduce {
+                        state.copy(
+                            reviews = querySnapshot.documents.mapNotNull { document ->
+                                document.toObject(Review::class.java)
+                            }
+                        )
+                    }
+                }
+            }
+            .addOnFailureListener {
+                viewModelScope.launch {
+                    postSideEffect(FeedSideEffect.Toast(message = it.localizedMessage))
+                }
+            }
+    }
+
+    private fun getReviewsWithBestPlot()  = intent {
+        firestoreDatabase.collection("reviews")
+            .whereGreaterThan("plotRating", 18)
             .get()
             .addOnSuccessListener { querySnapshot ->
                 viewModelScope.launch {

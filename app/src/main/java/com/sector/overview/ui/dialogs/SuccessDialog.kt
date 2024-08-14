@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import by.kirich1409.viewbindingdelegate.viewBinding
 import com.sector.overview.databinding.SuccessDialogBinding
 import com.sector.ui.utils.setLayoutWidth
 
@@ -15,7 +14,16 @@ class SuccessDialog(
     private val onCloseDialog: () -> Unit
 ): DialogFragment() {
 
-    private val viewBinding: SuccessDialogBinding by viewBinding(SuccessDialogBinding::bind)
+    private var binding: SuccessDialogBinding? = null
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = SuccessDialogBinding.inflate(layoutInflater)
+        return binding?.rootView
+    }
 
     override fun onStart() {
         super.onStart()
@@ -29,7 +37,7 @@ class SuccessDialog(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewBinding.btnGoBackToMovie.setOnClickListener {
+        binding?.btnGoBackToMovie?.setOnClickListener {
             dismiss()
             onCloseDialog.invoke()
         }

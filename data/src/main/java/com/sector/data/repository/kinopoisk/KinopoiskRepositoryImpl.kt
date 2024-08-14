@@ -18,4 +18,10 @@ internal class KinopoiskRepositoryImpl(
             kinopoiskApi.getMovies().docs.toDomain()
         )
     }.flowOn(Dispatchers.IO)
+
+    override suspend fun search(query: String): Flow<List<Movie>> = flow {
+        emit(
+            kinopoiskApi.search(query).docs.toDomain()
+        )
+    }.flowOn(Dispatchers.IO)
 }

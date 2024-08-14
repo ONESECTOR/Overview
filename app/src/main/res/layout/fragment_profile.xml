@@ -7,6 +7,7 @@
     tools:background="@color/purple_background"
     tools:context=".ui.profile.ProfileFragment">
 
+    <!-- git test -->
     <ImageView
         android:id="@+id/iv_profile"
         android:layout_width="100dp"
@@ -22,7 +23,7 @@
         android:id="@+id/tv_username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
+        android:layout_marginHorizontal="18dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/tt_norms_pro_medium"
         android:textAlignment="center"
@@ -37,7 +38,7 @@
         android:id="@+id/tv_status"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
+        android:layout_marginHorizontal="18dp"
         android:layout_marginTop="2dp"
         android:fontFamily="@font/tt_norms_pro_light"
         android:textAlignment="center"
@@ -52,7 +53,7 @@
         android:id="@+id/tv_common_category"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
+        android:layout_marginHorizontal="18dp"
         android:layout_marginTop="52dp"
         android:fontFamily="@font/tt_norms_pro_medium"
         android:text="@string/profile_common_category_title"
@@ -65,7 +66,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
+        android:layout_marginHorizontal="18dp"
         android:layout_marginTop="15dp"
         app:cardBackgroundColor="@color/card_color"
         app:cardCornerRadius="8dp"
