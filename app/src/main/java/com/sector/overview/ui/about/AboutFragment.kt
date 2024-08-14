@@ -26,6 +26,9 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
         viewBinding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
 
         println()
+        println()
+        println()
+        println()
     }
 
     private fun onOpenBrowser(url: String) {
